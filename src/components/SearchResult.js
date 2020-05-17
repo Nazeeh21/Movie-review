@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import DetailCards from './DetailCards';
+import MovieCard from "./MovieCard";
 
 
 const API_KEY = "c9a1dae6cf28efb4ba69f43ecf6f4729";
 
-function MovieDetail({ match }) {
+function SearchResult({ match }) {
     // console.log(match.params.title);
 
     const [movies, setMovies] = useState([]);
     
     useEffect(() => {
-        getMovieDetail().then(data => setMovies(data));
+        getSearchResult().then(data => setMovies(data));
     }, []);
 
-    const getMovieDetail = async () => {
+    const getSearchResult = async () => {
         const response = await axios.get(
         "https://api.themoviedb.org/3/search/movie",
         {
@@ -44,17 +44,17 @@ function MovieDetail({ match }) {
     <div>
         {movies.length === 0 ? loadingText :
 
-            <DetailCards movie_detail = {movies[0]} />
-        // movies.map(movie => (<DetailCards 
-        //     key={movie.id}
-        //     // title={movie.title}
-        //     movie_detail = {movie}/>))
+            // <DetailCards movie_detail = {movies[0]} />
+        movies.map(movie => (<MovieCard 
+            key={movie.id}
+            title={movie.title}
+            poster = {movie.poster_path}/>))
         }
         
     </div>
   )
 
 }
+// key={movie.id} title={movie.title} poster={movie.poster_path}
 
-export default MovieDetail;
-
+export default SearchResult;

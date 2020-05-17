@@ -16,7 +16,7 @@ export default function({ title, poster }) {
       <h1>
       <NavLink to={`/movie/${title}`} >{title}</NavLink>
       </h1>
-      <img src={`https://image.tmdb.org/t/p/w185${poster}`} alt="Poster-img" />
+      <img src={`${IMG_URL}${poster}`} alt="Thumbnail-can't-rendered" />
     </div>
   );
 }

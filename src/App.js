@@ -4,6 +4,7 @@ import MovieCard from "./components/MovieCard";
 import { Route, Switch } from "react-router-dom";
 import { getMovies } from "./controllers/MovieControllers";
 import MovieDetails from './components/MovieDetails';
+import SearchResult from "./components/SearchResult";
 
 
 export default function App() {
@@ -19,8 +20,8 @@ export default function App() {
       const submitMovie = event.target.mName.value;
       console.log(submitMovie);
       
-      window.location.href='/movie/' + submitMovie;
-      
+      // window.location.href='/movie/' + submitMovie;
+      window.location.href='/search/' + submitMovie;
   }
 
   const [movies, setMovies] = useState([]);
@@ -54,6 +55,8 @@ export default function App() {
       </Route>
       
       <Route path="/movie/:title" exact component={MovieDetails} />
+
+      <Route path="/search/:title" exact component={SearchResult} />
     </Switch>
     </div>
   );
