@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./styles.css";
 import MovieCard from "./components/MovieCard";
-import { Route, Switch, Link, Redirect } from "react-router-dom";
-import About from "./About";
+import { Route, Switch } from "react-router-dom";
 import { getMovies } from "./controllers/MovieControllers";
 import MovieDetails from './components/MovieDetails';
 
@@ -19,8 +18,9 @@ export default function App() {
       event.preventDefault();
       const submitMovie = event.target.mName.value;
       console.log(submitMovie);
-      // return <Redirect to={`/movie/${submitMovie}`} />
+      
       window.location.href='/movie/' + submitMovie;
+      
   }
 
   const [movies, setMovies] = useState([]);
@@ -32,7 +32,7 @@ export default function App() {
   return (
     <div>
       <p>Search for Movie: {movieSearch}</p>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} action={`/movie/${movieSearch}`}>
         <input
         onChange={handleChange}
         value={movieSearch}
@@ -40,20 +40,19 @@ export default function App() {
         placeholder="Search Movies" />
         <button type="submit">Search</button>
       </form>
-    
+      
+   
     <Switch>
       <Route path="/" exact>
         <div className="App">
           {movies.length === 0
             ? "Loading"
             : movies.map(movie => (
-                <MovieCard key={movie.id} title={movie.title} />
+                <MovieCard key={movie.id} title={movie.title} poster={movie.poster_path} />
               ))}
         </div>
       </Route>
-      <Route path="/about" exact>
-        <About />
-      </Route>
+      
       <Route path="/movie/:title" exact component={MovieDetails} />
     </Switch>
     </div>

@@ -36,7 +36,6 @@ function MovieDetail({ match }) {
   
   setTimeout(() => {
       setLoadingText("Sorry! Can't fetch data")
-    
   }, 4000);
 
 
@@ -57,3 +56,4 @@ function MovieDetail({ match }) {
 }
 
 export default MovieDetail;
+

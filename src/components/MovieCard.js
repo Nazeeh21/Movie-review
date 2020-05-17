@@ -1,7 +1,10 @@
 import React from "react";
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
-export default function({ title }) {
+const IMG_URL = "https://image.tmdb.org/t/p/w185";
+
+export default function({ title, poster }) {
+  
   return (
     <div
       style={{
@@ -13,6 +16,7 @@ export default function({ title }) {
       <h1>
       <NavLink to={`/movie/${title}`} >{title}</NavLink>
       </h1>
+      <img src={`https://image.tmdb.org/t/p/w185${poster}`} alt="Poster-img" />
     </div>
   );
 }
