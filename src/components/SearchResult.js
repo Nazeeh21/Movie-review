@@ -37,7 +37,7 @@ function SearchResult({ match }) {
   
   setTimeout(() => {
       setLoadingText("Sorry! Can't fetch data")
-  }, 5000);
+  }, 4000);
 
 
   return (

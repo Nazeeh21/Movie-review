@@ -11,8 +11,18 @@ export default function Trailer({ movie_id }) {
   const [trailerText, setTrailerText] = useState("")
 
   useEffect(() => {
-    getTrailer().then(data => setTrailer(data));
-    trailer === null ? setTrailerText("Trailer not available") : setTrailerText("Trailer");
+    getTrailer().then(data => {
+      // console.log(data[0].key)
+
+      if(data.length !== 0) {
+        setTrailer(TRAILER_BASE_LINK + data[0].key);
+        setTrailerText("Trailer")
+      } else {
+        setTrailer("")
+        setTrailerText("Oops! Trailer not available")
+      }
+      
+    });
   }, []);
 
   const getTrailer = async () => {
@@ -25,23 +35,27 @@ export default function Trailer({ movie_id }) {
         }
       }
     );
-    const trailer_key = response.data.results[0].key;
+    // const trailer_key = response.data.results[0].key;
+    const trailer_array = response.data.results;
     console.log(response.status);
-    console.log(trailer_key);
-    return trailer_key;
+    console.log(response.data.results.length);
+    // console.log(trailer_key);
+    return trailer_array;
   };
 
   return <div>
-    
-    <a 
+    {trailerText !== "Trailer" ? <div style ={{color: "red"}}>{trailerText}</div> : <a 
     // style={{
     //   color: "blue",
     //   textDecoration: "underline",
     // }} 
     // onClick={()=> window.open(TRAILER_BASE_LINK + `${trailer}`, "_blank")} 
-    href={TRAILER_BASE_LINK + `${trailer}`}
+    href={`${trailer}`}
     >{trailerText}</a>
+    }
+    
      </div>;
 }
 // "https://api.themoviedb.org/3/movie/" + {movie_id} + "/videos?api_key=c9a1dae6cf28efb4ba69f43ecf6f4729&language=en-US"
 // EXAMPLE_URL = "https://api.themoviedb.org/3/movie/271110/videos?api_key=c9a1dae6cf28efb4ba69f43ecf6f4729&language=en-US"
+// setTrailer(TRAILER_BASE_LINK + data[0].key)
