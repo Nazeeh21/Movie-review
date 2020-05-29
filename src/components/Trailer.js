@@ -14,14 +14,13 @@ export default function Trailer({ movie_id }) {
     getTrailer().then(data => {
       // console.log(data[0].key)
 
-      if(data.length !== 0) {
+      if (data.length !== 0) {
         setTrailer(TRAILER_BASE_LINK + data[0].key);
-        setTrailerText("Trailer")
+        setTrailerText("Trailer");
       } else {
-        setTrailer("")
-        setTrailerText("Oops! Trailer not available")
+        setTrailer("");
+        setTrailerText("Oops! Trailer not available");
       }
-      
     });
   }, []);
 
@@ -44,18 +43,21 @@ export default function Trailer({ movie_id }) {
   };
 
   return <div>
-    {trailerText !== "Trailer" ? <div style ={{color: "red"}}>{trailerText}</div> : <a 
-    // style={{
-    //   color: "blue",
-    //   textDecoration: "underline",
-    // }} 
-    // onClick={()=> window.open(TRAILER_BASE_LINK + `${trailer}`, "_blank")} 
-    href={`${trailer}`}
-    >{trailerText}</a>
-    }
-    
-     </div>;
+  {trailerText !== "Trailer" ? (
+    <div style={{ color: "red" }}>{trailerText}</div>
+  ) : (
+    <a
+      // style={{
+      //   color: "blue",
+      //   textDecoration: "underline",
+      // }}
+      // onClick={()=> window.open(TRAILER_BASE_LINK + `${trailer}`, "_blank")}
+      href={`${trailer}`}
+    >
+      {trailerText}
+    </a>
+  )}
+</div>;
 }
 // "https://api.themoviedb.org/3/movie/" + {movie_id} + "/videos?api_key=c9a1dae6cf28efb4ba69f43ecf6f4729&language=en-US"
 // EXAMPLE_URL = "https://api.themoviedb.org/3/movie/271110/videos?api_key=c9a1dae6cf28efb4ba69f43ecf6f4729&language=en-US"
-// setTrailer(TRAILER_BASE_LINK + data[0].key)

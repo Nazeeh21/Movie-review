@@ -1,5 +1,34 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .App {
   font-family: sans-serif;
   text-align: center;
-  margin:1% auto;
+  margin: 1% auto;
+  background: #02123c;
+  display: grid;
+  grid-template-columns: repeat(4, 3fr);
+}
+
+.inputsearch {
+  margin-top: 1rem;
+  padding: 0.5rem 2rem;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 27px;
+  border: 4px solid #1890ff;
+  background: #334269;
+  color: #cacaca;
+  outline: none;
+}
+
+.searchbtn {
+  padding: 1.3rem;
+  border: none;
+  border-radius: 50%;
+  border: 3px solid #1890ff;
+  background: #334269;
 }
