@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import MovieCard from "./MovieCard";
+import SearchResultDisplay from './SearchResultDisplay'
 
 
 const API_KEY = "c9a1dae6cf28efb4ba69f43ecf6f4729";
@@ -41,11 +42,15 @@ function SearchResult({ match }) {
 
 
   return (
-    <div>
+    <div 
+    style={{
+        background: "#02123c",
+        padding: "0 1%",
+        margin: "auto"}}>
         {movies.length === 0 ? loadingText :
 
             // <DetailCards movie_detail = {movies[0]} />
-        movies.map(movie => (<MovieCard 
+        movies.map(movie => (<SearchResultDisplay 
             key={movie.id}
             title={movie.title}
             poster = {movie.poster_path}/>))

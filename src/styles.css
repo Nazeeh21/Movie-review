@@ -14,7 +14,8 @@
 }
 
 .inputsearch {
-  margin-top: 1rem;
+  /* margin-top: 1rem; */
+  margin: 1%;
   padding: 0.5rem 2rem;
   font-size: 1.2rem;
   border: none;
@@ -26,7 +27,8 @@
 }
 
 .searchbtn {
-  padding: 1.3rem;
+  padding: 1.5%;
+  padding-bottom: 1%;
   border: none;
   border-radius: 50%;
   border: 3px solid #1890ff;
